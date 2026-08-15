@@ -38,7 +38,7 @@ struct payload {
 	 byte TlDrx;
 }; 
 payload payload; 
-/*
+
 struct Arduino2 {
 	 byte iX2tx; 
 	 byte iY2tx; 
@@ -49,13 +49,13 @@ struct Arduino2 {
 	 byte iTlDtx;
 };
 Arduino2 Arduino2;
-*/
+
 unsigned long lastSignalMillis = 0;
 unsigned long interval = 0; 
 
 void setup() 
 { 
-	 //Wire.begin(); //Spustí I2C jako master
+	 Wire.begin(); //Spustí I2C jako master //A4 -> SDA, A5 -> SCL
 	 Serial.begin(115200); 
 	 pinMode(CE_PIN, OUTPUT);
 
@@ -96,7 +96,7 @@ void loop()
 	 unsigned long currentMillis = millis(); 
 	 if (radio.available() > 0) { 
 	   radio.read(&payload, sizeof(payload)); 
-/*
+
 		 Arduino2.iX2tx = payload.X2rx;
 		 Arduino2.iY2tx = payload.Y2rx; 
 		 Arduino2.iJ2tx = payload.J2rx; 
@@ -105,15 +105,15 @@ void loop()
 		 Arduino2.iTlCtx = payload.TlCrx;
 		 Arduino2.iTlDtx = payload.TlDrx;
 
-		 Wire.beginTransmission(2);
-		 Wire.write(Arduino2.iX2tx);
-		 Wire.write(Arduino2.iY2tx);
-		 Wire.write(Arduino2.iJ2tx);
-		 Wire.write(Arduino2.iTlAtx);
-		 Wire.write(Arduino2.iTlBtx);
-		 Wire.write(Arduino2.iTlCtx);
-		 Wire.write(Arduino2.iTlDtx);
-		 Wire.endTransmission();*/
+		// Wire.beginTransmission(2);
+		// Wire.write(Arduino2.iX2tx);
+		 //Wire.write(Arduino2.iY2tx);
+		 //Wire.write(Arduino2.iJ2tx);
+		 //Wire.write(Arduino2.iTlAtx);
+		 //Wire.write(Arduino2.iTlBtx);
+		 //Wire.write(Arduino2.iTlCtx);
+		 //Wire.write(Arduino2.iTlDtx);
+		// Wire.endTransmission();
 
 		 //Odeslat pres I2C Joystick 2 + Tlacitka
 		 if (payload.X1rx > 110 && payload.X1rx < 135) {
