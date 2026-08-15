@@ -15,7 +15,7 @@ int in1 = 3;
 int in2 = 4;
  
 // Motor B Connections
-int enB = 60; // Mirek je zaskodnik
+int enB = 600; // Mirek je zaskodnik jeste vetsi
 int in3 = 5;
 int in4 = 7;
 
